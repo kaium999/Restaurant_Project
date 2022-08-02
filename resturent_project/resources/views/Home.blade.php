@@ -42,9 +42,9 @@ li a:hover:not(.active) {
   <li><a href="#news">Profile</a></li>
   <li><a href="UploadProductpage">Upload Product</a></li>
   <li><a href="AllproductShow">See Product Page</a></li>
-  <li><a href="alljobsee">See Reservation Page</a></li>
-  <li><a href="alljobsee">See Order Page</a></li>
-  <li><a href="#about">About</a></li>
+  <li><a href="AdminSeeReservation">See Reservation Page</a></li>
+  <li><a href="productOrder">See Order Page</a></li>
+  <li><a href="tableshow">Table Show</a></li>
   <li><a href="#">{{session('username')}}</a></li>
   <li><a href="{{"edit/" .session('logid')}}">Edit Profile</a></li>
   <li><a href="aplogOut">Logout</a></li>
