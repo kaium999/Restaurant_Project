@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\Order;
 use File;
 class ProductController extends Controller
 {
@@ -72,6 +73,27 @@ public function Productupdate(Request $req){
     $productData->update();
     return redirect('AllproductShow'); 
 
+}
+public function ProductOrder(){
+    $product=Menu::all();
+    return view('MenuPageCustomer',compact('product'));
+}
+public function OrderConfirmPage(){
+    return view("CustomerOrderpage");
+}
+public function OrderConfirm(Request $req){
+    $order=new Order();
+    $order->order_name=$req->customer_name;
+    $order->order_email=$req->customer_email;
+    $order->mobile_number=$req->mobile_number;
+    $order->quantity=$req->Quantity;
+    $order->date=$req->order_date;
+    $order->time=$req->time;
+    $product=Menu::find(2);
+    $order->total_price=$req->Quantity*$product->product_price;
+    $order->save();
+
+    //return view("CustomerOrderpage");
 }
 
 }
