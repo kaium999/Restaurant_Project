@@ -78,8 +78,9 @@ public function ProductOrder(){
     $product=Menu::all();
     return view('MenuPageCustomer',compact('product'));
 }
-public function OrderConfirmPage(){
-    return view("CustomerOrderpage");
+public function OrderConfirmPage($id){
+    $product=Menu::find($id);
+    return view("CustomerOrderpage",compact('product'));
 }
 public function OrderConfirm(Request $req){
     $order=new Order();
@@ -89,9 +90,10 @@ public function OrderConfirm(Request $req){
     $order->quantity=$req->Quantity;
     $order->date=$req->order_date;
     $order->time=$req->time;
-    $product=Menu::find(2);
+    $product=Menu::find($req->id);
     $order->total_price=$req->Quantity*$product->product_price;
     $order->save();
+    return "Your total price  is".$order->total_price;
 
     //return view("CustomerOrderpage");
 }

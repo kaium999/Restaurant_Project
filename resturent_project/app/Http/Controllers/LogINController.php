@@ -14,7 +14,7 @@ class LogINController extends Controller
             if(Hash::check($req->password,$obj->password)){
                 $req->session()->put('logid',$obj->id);
                 $req->session()->put('username',$obj->name);
-             return view('Home');
+             return redirect('Home');
             }
             else{
              return "You are not Athentic User";
@@ -28,7 +28,7 @@ class LogINController extends Controller
     public function apLogout(){
         if(Session::has('logid')){
             Session::pull('logid');
-            return redirect('/');
+            return redirect('login');
         }
      }
 }
