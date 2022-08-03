@@ -58,9 +58,9 @@
              
               
                 <td>
-                <a href="OrderConfirmPage">Oder</a>
-                 
-                  {{-- <a href="{{"OrderConfirmPage/" .$menu->id}}">Order</a>--}}
+                
+                  {{--<a href="OrderConfirmPage">Oder</a>--}}
+                  <a href="{{"OrderConfirmPage/" .$menu->id}}">Order</a>
                 </td>
             </tr>
             @endforeach

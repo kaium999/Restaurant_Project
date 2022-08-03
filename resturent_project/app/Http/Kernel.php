@@ -36,6 +36,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //'AlreadyLogIn' => \App\Http\Middleware\AlreadyLogIn::class,
+            //\App\Http\Middleware\AlreadyLogIn::class,
+            //\App\Http\Middleware\Authcheck::class,
         ],
 
         'api' => [
@@ -53,6 +56,8 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'Alreadylogin' => \App\Http\Middleware\AlreadyLogIn::class,
+        'AuthCheck' => \App\Http\Middleware\Authcheck::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-route::get('/',"App\Http\Controllers\homecontroller@login");
+route::get('/login',"App\Http\Controllers\homecontroller@login"); //->middleware('Alreadylogin');
 route::get('/registration',"App\Http\Controllers\homecontroller@registration");
 route::post('/addadmin',"App\Http\Controllers\Admincontroller@addAdmin");
 route::post('/loginCheck',"App\Http\Controllers\LogINController@LoginCheck");
@@ -25,19 +25,22 @@ route::get('/aplogOut',"App\Http\Controllers\LogINController@apLogout");
 
 
 /*Product Routing*/
-route::get('/UploadProductpage',"App\Http\Controllers\ProductController@UploadProductpage");
-route::post('/UploadProduct',"App\Http\Controllers\ProductController@UploadProduct");
-route::get('/AllproductShow',"App\Http\Controllers\ProductController@AllproductShow");
+
+route::get('Home',"App\Http\Controllers\homecontroller@Home");
+route::get('/UploadProductpage',"App\Http\Controllers\ProductController@UploadProductpage")->middleware('AuthCheck');;
+route::post('/UploadProduct',"App\Http\Controllers\ProductController@UploadProduct")->middleware('AuthCheck');
+route::get('/AllproductShow',"App\Http\Controllers\ProductController@AllproductShow")->middleware('AuthCheck');;
 Route::get('delete/{id}','App\Http\Controllers\ProductController@ProductDelete');
 Route::get('edit/{id}','App\Http\Controllers\ProductController@ProductEdit');
 Route::post('/edit','App\Http\Controllers\ProductController@Productupdate');
-Route::get('/productOrder','App\Http\Controllers\ProductController@ProductOrder');
-Route::get('OrderConfirmPage/','App\Http\Controllers\ProductController@OrderConfirmPage');
-Route::post('OrderConfirm','App\Http\Controllers\ProductController@OrderConfirm');
+Route::get('/productOrder','App\Http\Controllers\ProductController@ProductOrder')->middleware('AuthCheck');;
+Route::get('OrderConfirmPage/{id}','App\Http\Controllers\ProductController@OrderConfirmPage')->middleware('AuthCheck');;
+Route::post('OrderConfirmPage','App\Http\Controllers\ProductController@OrderConfirm')->middleware('AuthCheck');;
 
 
 /*Table Show and Reservation Routing*/
-route::get('/tableshow',"App\Http\Controllers\Restaurent_table_Controller@showTable");
-route::get('/tablreservation',"App\Http\Controllers\Restaurent_table_Controller@Reservation_table");
-route::post('/tablreservationCheck',"App\Http\Controllers\Restaurent_table_Controller@Reservation_table_Check");
-route::get('/AdminSeeReservation',"App\Http\Controllers\Restaurent_table_Controller@AdminSeeReservation");
+route::get('/tableshow',"App\Http\Controllers\Restaurent_table_Controller@showTable")->middleware('AuthCheck');;
+route::get('/tablreservation',"App\Http\Controllers\Restaurent_table_Controller@Reservation_table")->middleware('AuthCheck');;
+route::post('/tablreservationCheck',"App\Http\Controllers\Restaurent_table_Controller@Reservation_table_Check")->middleware('AuthCheck');;
+route::get('/AdminSeeReservation',"App\Http\Controllers\Restaurent_table_Controller@AdminSeeReservation")->middleware('AuthCheck');;
+

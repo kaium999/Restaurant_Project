@@ -12,4 +12,7 @@ class homecontroller extends Controller
     public function registration(){
         return view('registration');
     }
+    public function Home(){
+        return view('Home');
+    }
 }
